@@ -24,8 +24,8 @@
 
 	<property name="mc.version"           value="1.6.2"/>
 	<property name="forge.version"        value="9.10.0.845"/>
-	<property name="mod.version"          value="4.X"/>
-	<property name="mod.version.full"     value="${mod.version}-${env.BUILD_NUMBER}"/>
+	<property name="mod.version"          value="4.1"/>
+	<property name="mod.version.full"     value="${mod.version}.${env.BUILD_NUMBER}"/>
   
 	<!-- Let's make ant make work with git ;) -->
 	<macrodef name = "git">
