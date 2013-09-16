@@ -3,7 +3,7 @@ package ljdp.minechem.common;
 // This code was based off of https://github.com/Glitchfiend/BiomesOPlenty/blob/master/common/biomesoplenty/configuration/BOPPotions.java
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
-
+import ljdp.minechem.common.PotionProvider;
 import net.minecraft.potion.Potion;
 
 public class PotionInjector {
@@ -34,6 +34,8 @@ public class PotionInjector {
 		} catch (Exception e) {
 			System.err.println("He's Dead Jim" + " " + e);
 		}
-		atropineHigh = new PotionProvider(potionTotal, true, 0x00FF6E).setPotionName("Delirium").setIconIndex(2, 1); // That icon is a refrence to alice in wonderland :P
+		atropineHigh = new PotionProvider(potionTotal, true, 0x00FF6E);
+		atropineHigh.setPotionName("Delirium");
+		atropineHigh.setIconIndex(2,1); // That icon is a refrence to alice in wonderland :P
 	}
 }
