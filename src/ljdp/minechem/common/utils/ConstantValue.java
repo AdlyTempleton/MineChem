@@ -72,7 +72,8 @@ public interface ConstantValue {
     public static final String JOURNAL_GUI = TEXTURE_GUI_DIR + "ChemistsJournalGUI.png";
     public static final String VAT_GUI = TEXTURE_GUI_DIR + "ChemicalVatGUI.png";
     public static final String PRINT_GUI = TEXTURE_GUI_DIR + "PrintGUI.png";
-   
+    public static final String HIGH_NIGHTSHADE = TEXTURE_GUI_DIR + "NightshadeHigh";
+    
     public static final String MICROSCOPE_MODEL = TEXTURE_MODEL_DIR + "MicroscopeModel.png";
     public static final String DECOMPOSER_MODEL_ON = TEXTURE_MODEL_DIR + "DecomposerModelOn.png";
     public static final String DECOMPOSER_MODEL_OFF = TEXTURE_MODEL_DIR + "DecomposerModelOff.png";
