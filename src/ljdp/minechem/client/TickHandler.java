@@ -84,8 +84,7 @@ public class TickHandler implements ITickHandler {
 				PotionEffect DHigh = player.getActivePotionEffect(PotionInjector.atropineHigh);
 				int Multiplier = DHigh.getAmplifier();
 				if (Multiplier == 1 ){
-				RenderDelirium(10);
-				} 
+				RenderDelirium(10);} 
 				else if (Multiplier == 2 ){
 					RenderDelirium(15);
 				}
@@ -158,7 +157,7 @@ public class TickHandler implements ITickHandler {
 		Gui gui = new Gui();
 		GL11.glDisable(GL11.GL_DEPTH_TEST);
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
-		int color = (int)(220.0F * markiplier - 150) << 24 | 1052704;
+		int color = (int) (220.0F * markiplier) << 24 | 1052704;
 		gui.drawRect(0, 0, width, height, color);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		GL11.glEnable(GL11.GL_DEPTH_TEST);
