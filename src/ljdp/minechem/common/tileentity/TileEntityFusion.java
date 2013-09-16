@@ -18,7 +18,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraftforge.common.ForgeDirection;
 import buildcraft.api.core.SafeTimeTracker;
 
-public class TileEntityFusion extends TileEntityMultiBlock implements ISidedInventory, IMinechemMachinePeripheral {
+public class TileEntityFusion extends TileEntityMultiBlock implements  IMinechemMachinePeripheral {
 
     public static int[] kFusionStar = { 0 };
     public static int[] kInput = { 1, 2 };
@@ -45,7 +45,6 @@ public class TileEntityFusion extends TileEntityMultiBlock implements ISidedInve
     boolean shouldSendUpdatePacket;
 
     public TileEntityFusion() {
-    	super();
     	inventory = new ItemStack[getSizeInventory()];
         inputInventory = new BoundedInventory(this, kInput);
         outputInventory = new BoundedInventory(this, kOutput);
@@ -59,6 +58,7 @@ public class TileEntityFusion extends TileEntityMultiBlock implements ISidedInve
 
     @Override
 	public void updateEntity() {
+    	System.out.println("fusion tick"+worldObj.isRemote);
 		super.updateEntity();
 		if(!completeStructure)
 			return;
@@ -177,6 +177,7 @@ public class TileEntityFusion extends TileEntityMultiBlock implements ISidedInve
     @Override
     public void setInventorySlotContents(int slot, ItemStack itemstack) {
         if (slot==0&&itemstack != null && itemstack.itemID == Item.netherStar.itemID) {
+        	System.out.println("Turning nether star into fusion star");
             this.inventory[slot] = new ItemStack(MinechemItems.fusionStar);
         } else {
             this.inventory[slot] = itemstack;
@@ -341,29 +342,6 @@ public class TileEntityFusion extends TileEntityMultiBlock implements ISidedInve
 		return 0;
 	}
 
-	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
-		// TODO Auto-generated method stub
-		if(var1==1){
-			return this.kInput;
-		}
-		if(var1==0){
-			return this.kOutput;
-		}
-		return this.kFusionStar;
-	}
-
-	@Override
-	public boolean canInsertItem(int i, ItemStack itemstack, int j) {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean canExtractItem(int i, ItemStack itemstack, int j) {
-		// TODO Auto-generated method stub
-		return true;
-	}
 
 	public int getFusionEnergyStored() {
 		if(this.inventory[0]!=null){
