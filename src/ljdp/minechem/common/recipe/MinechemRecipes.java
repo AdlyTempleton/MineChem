@@ -499,6 +499,8 @@ public class MinechemRecipes {
         this.registerPoisonRecipes(EnumMolecule.redrocks);
 		this.registerPoisonRecipes(EnumMolecule.coke);
 		this.registerPoisonRecipes(EnumMolecule.theobromine); 
+		this.registerPoisonRecipes(EnumMolecule.pantherine); 
+		this.registerPoisonRecipes(EnumMolecule.latropine); 
 	}
 
     private void addDecomposerRecipesFromMolecules() {
