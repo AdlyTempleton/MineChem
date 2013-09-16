@@ -18,10 +18,10 @@ public class ContainerFusion extends Container implements IRadiationShield {
 		this.inventoryPlayer = inventoryPlayer;
 		this.fusion = fusion;
 		
-		addSlotToContainer(new SlotFusionStar(fusion, fusion.kStartFusionStar, 80, 18));
-		addSlotToContainer(new SlotElement(fusion, fusion.kStartInput1, 22, 62));
-		addSlotToContainer(new SlotElement(fusion, fusion.kStartInput2, 138, 62));
-		addSlotToContainer(new SlotOutput(fusion, fusion.kStartOutput, 80, 62));
+		addSlotToContainer(new Slot(fusion, fusion.kStartFusionStar, 80, 18));
+		addSlotToContainer(new Slot(fusion, fusion.kStartInput1, 22, 62));
+		addSlotToContainer(new Slot(fusion, fusion.kStartInput2, 138, 62));
+		addSlotToContainer(new Slot(fusion, fusion.kStartOutput, 80, 62));
 		
 		bindPlayerInventory(inventoryPlayer);
 	}
@@ -54,28 +54,22 @@ public class ContainerFusion extends Container implements IRadiationShield {
 			ItemStack stack = stackInSlot.copy();
 			if(slot >= 0 && slot < fusion.getSizeInventory()) {
 				if(!mergeItemStack(stackInSlot, fusion.getSizeInventory(), inventorySlots.size(), true)){
-					System.out.println(1);
 					return null;
 				}
 			} else if(slot >= fusion.getSizeInventory()) {
 				if(!mergeItemStack(stackInSlot, fusion.kStartInput1, fusion.kStartInput1 + 1, false)){
-					System.out.println(2);
 					return null;
 				}
 			}
 			
 			if(stackInSlot.stackSize == 0){
-				System.out.println(3);
 				slotObject.putStack(null);
 			}
 			else{
-				System.out.println(4);
 				slotObject.onSlotChanged();
 			}
-			System.out.println(5);
 			return stack;
 		}
-		System.out.println(6);
 		return null;
 	}
 
