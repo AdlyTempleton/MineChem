@@ -10,6 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.common.IScheduledTickHandler;
 import cpw.mods.fml.common.TickType;
+import ljdp.minechem.common.PharmacologyEffect;
 
 public class ScheduledTickHandler implements IScheduledTickHandler {
 
