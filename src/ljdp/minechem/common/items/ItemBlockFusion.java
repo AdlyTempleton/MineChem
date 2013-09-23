@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockFusion extends ItemBlock {
 
-    private static final String[] names = { "Fusion Wall", "Tungsten Plating", "Fusion Core" };
+    private static final String[] names = { "Fusion Wall", "Tungsten Plating", "Fusion Core", "Error" }; // Java indexes start at zero, NOT ONE! 
 
     public ItemBlockFusion(int par1) {
         super(par1);
