@@ -18,14 +18,23 @@ public class ItemBlockFusion extends ItemBlock {
         return damageValue;
     }
 
-    @Override
+  @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return super.getUnlocalizedName(itemstack) + names[itemstack.getItemDamage()];
-    }
+	 if (itemstack.getItemDamage() >  2) {
+     return "ERROR";
+	 }
+	 else {
+	 return super.getUnlocalizedName(itemstack) + names[itemstack.getItemDamage()];
+	 }
+}
 
     @Override
     public String getItemDisplayName(ItemStack itemstack) {
-        return names[itemstack.getItemDamage()];
+	 if (itemstack.getItemDamage() >  2) {
+     return "ERROR";
+	 }
+	 else {
+       return names[itemstack.getItemDamage()];
     }
 
 }
