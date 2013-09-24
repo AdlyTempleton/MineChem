@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 
 public class ItemBlockFusion extends ItemBlock {
 
-    private static final String[] names = { "Fusion Wall", "Tungsten Plating", "Fusion Core" };
+    private static final String[] names = { "Fusion Wall", "Tungsten Plating", "Fusion Core" }; // Java indexes start at zero, NOT ONE! 
 
     public ItemBlockFusion(int par1) {
         super(par1);
@@ -18,14 +18,23 @@ public class ItemBlockFusion extends ItemBlock {
         return damageValue;
     }
 
-    @Override
+  @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return super.getUnlocalizedName(itemstack) + names[itemstack.getItemDamage()];
-    }
+	 if (itemstack.getItemDamage() >  2) {
+     return "ERROR";
+	 }
+	 else {
+	 return super.getUnlocalizedName(itemstack) + names[itemstack.getItemDamage()];
+	 }
+}
 
     @Override
     public String getItemDisplayName(ItemStack itemstack) {
-        return names[itemstack.getItemDamage()];
+	 if (itemstack.getItemDamage() >  2) {
+     return "ERROR";
+	 }
+	 else {
+       return names[itemstack.getItemDamage()];
     }
 
 }

@@ -623,8 +623,7 @@ public class MinechemRecipes {
 	int[] 	 sizeCoeff = {1, 4, 8, 4, 36, 16, 4};
 
    @ForgeSubscribe
-   public void oreEvent(OreDictionary.OreRegisterEvent var1) { // THIS IS A FUCKING MESS BUT IT WILL WORK FOR NOW!!!!!! NO IT REALLU DOESNT
-	   //What the hell does this do? Seriously, what?
+   public void oreEvent(OreDictionary.OreRegisterEvent var1) { // This is the subroutine that registers all of the ore dictonary related things 
 		for (int i=0; i<compounds.length; i++){
 			for (int j=0; j<itemTypes.length; j++){
 				if(var1.Name.equals(itemTypes[j]+compounds[i])){
@@ -757,7 +756,7 @@ public class MinechemRecipes {
        SynthesisRecipe.add(new SynthesisRecipe(var1.Ore, false, 1000, new Chemical[]{this.molecule(EnumMolecule.theobromine), this.element(EnumElement.S, 2)}));
    }
    
-   else if(var1.Name.contains("cropBlightberry")) {
+   else if(var1.Name.contains("cropBlightberry")) { // For somone reason, Natura uses the ore dictonary for inter-mod communication
        DecomposerRecipe.add(new DecomposerRecipe(var1.Ore, new Chemical[]{this.molecule(EnumMolecule.asprin), this.element(EnumElement.S, 2)}));
        SynthesisRecipe.add(new SynthesisRecipe(var1.Ore, false, 1000, new Chemical[]{this.molecule(EnumMolecule.asprin), this.element(EnumElement.S, 2)}));
    }
