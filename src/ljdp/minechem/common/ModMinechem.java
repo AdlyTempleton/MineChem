@@ -12,7 +12,6 @@ import ljdp.minechem.client.gui.tabs.TabTable;
 import ljdp.minechem.common.blueprint.MinechemBlueprint;
 import ljdp.minechem.common.gates.MinechemTriggers;
 import ljdp.minechem.common.network.PacketHandler;
-// import ljdp.minechem.common.plugins.BOPModule;
 import ljdp.minechem.common.recipe.MinechemRecipes;
 import ljdp.minechem.common.utils.ConstantValue;
 import ljdp.minechem.computercraft.ICCMain;
@@ -124,19 +123,9 @@ public class ModMinechem {
     @EventHandler
     public void postInit(FMLPostInitializationEvent event) {
     initComputerCraftAddon(event);
-	// initBOP();
-	DoDungeon();
     logger.info("POSTINIT PASSED");
     }
-
-    private void DoDungeon() {
-    ChestGenHooks ChestProvider = ChestGenHooks.getInfo(ChestGenHooks.DUNGEON_CHEST);
-    ItemStack A = new ItemStack(MinechemItems.blueprint,1,0);
-    ItemStack B = new ItemStack(MinechemItems.blueprint,1,1);
-    ChestProvider.addItem(new WeightedRandomChestContent(A, 10, 80, 1 ));
-    ChestProvider.addItem(new WeightedRandomChestContent(B, 10, 80, 1 ));
-    logger.info("Injected blueprints into loot chest generator");
-	}
+    
 	private void initComputerCraftAddon(FMLPostInitializationEvent event) {
         Object ccMain = event.buildSoftDependProxy("CCTurtle", "ljdp.minechem.computercraft.CCMain");
         if (ccMain != null) {
@@ -147,16 +136,6 @@ public class ModMinechem {
         }
 		}
 		
-  /*
-  private void initBOP (){
-    if (Loader.isModLoaded("BiomesOPlenty"))
-    { 
-    logger.info("BOP support loaded");
-	System.out.println("MineChem - If for any reason MineChem & Minecraft crashes. \n Try updating BOP \n");
-	BOPModule.DoBopExport();
-    }
-  }
-*/
     private void loadConfig(FMLPreInitializationEvent event) {
         Configuration config = new Configuration(event.getSuggestedConfigurationFile());
         MinechemBlocks.loadConfig(config);
@@ -164,9 +143,9 @@ public class ModMinechem {
         config.save();
         this.config = config;
     }
-    //Changed this from TextureStitchEvent.pre
+
     @SideOnly(Side.CLIENT)
-    public void textureHook(IconRegister icon){
+    public void textureHook(IconRegister icon){ // TextureStitchEvent.pre
                 TabStateControl.unpoweredIcon = icon.registerIcon(ConstantValue.UNPOWERED_ICON);
                 MinechemTriggers.outputJammed.icon = icon.registerIcon(ConstantValue.JAMMED_ICON);
                 MinechemTriggers.noTestTubes.icon = icon.registerIcon(ConstantValue.NO_BOTTLES_ICON);
