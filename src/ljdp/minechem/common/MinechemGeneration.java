@@ -13,7 +13,7 @@ public class MinechemGeneration implements IWorldGenerator {
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,
 			IChunkProvider chunkGenerator, IChunkProvider chunkProvider) {
-		if(!Loader.isModLoaded("AtomicScience")){
+		if(!Loader.isModLoaded("AtomicScience")) | (!Loader.isModLoaded("IC2")) {
 			if(world.provider.dimensionId==0){
 				for(int k=0;k<2;k++){
 					int firstBlockXCoord = chunkX + random.nextInt(16);
