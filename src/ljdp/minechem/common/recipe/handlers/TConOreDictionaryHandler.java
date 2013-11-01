@@ -11,7 +11,7 @@ import ljdp.minechem.common.ModMinechem;
 import ljdp.minechem.common.recipe.OreDictionaryHandler;
 import net.minecraftforge.oredict.OreDictionary.OreRegisterEvent;
 
-public class OreDictonaryMdyio implements OreDictionaryHandler {
+public class TConOreDictionaryHandler implements OreDictionaryHandler {
 
 	private enum EnumOre {
 	    ingotCobalt, 
