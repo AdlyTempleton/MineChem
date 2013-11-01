@@ -11,7 +11,7 @@
 		"output": [ "Block.stone", 7 ],
 		"shaped": true,
 		"energyCost": 50
-		"elements:" ["Si", 0, 0, "O2", 0, 0]
+		"elements": ["Si", 0, 0, "O2", 0, 0]
 	]
 },
 "Block.grass": {
@@ -27,7 +27,7 @@
 		"output": [ "Block.grass", 16 ]
 		"shaped": true,
 		"energyCost": 50
-		"elements:" [0, "Mcellulose", 0, 0, "O2", "Si"]
+		"elements": [0, "#m_cellulose", 0, 0, "O2", "Si"]
 	]
 }
 }

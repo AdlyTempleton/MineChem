@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.google.common.base.Enums;
 import com.google.common.base.Optional;
 
+import ljdp.minechem.api.core.Chemical;
 import ljdp.minechem.api.core.Element;
 import ljdp.minechem.api.core.EnumElement;
 import ljdp.minechem.api.core.EnumMolecule;
@@ -26,9 +27,9 @@ public class ParserHelper {
 		return elements.toArray(new String[elements.size()]);
 	}
 	
-	public Object[] parseElements(String elementString) {
+	public Chemical[] parseElements(String elementString) {
 		String[] elementStrings = parseElementStrings(elementString);
-		Object[] elements = new Object[elementStrings.length];
+		Chemical[] elements = new Chemical[elementStrings.length];
 		for(int i = 0; i < elementStrings.length; i++) {
 			String el = elementStrings[i];
 			int amount = 1;
