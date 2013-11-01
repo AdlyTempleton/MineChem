@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import ljdp.minechem.api.core.Chemical;
-
 import net.minecraft.item.ItemStack;
 
 public class DecomposerRecipeChance extends DecomposerRecipe {
@@ -17,6 +16,7 @@ public class DecomposerRecipeChance extends DecomposerRecipe {
         this.chance = chance;
     }
 
+    @Deprecated
     public DecomposerRecipeChance(ItemStack input, float chance, Chemical... output) {
         super(input, output);
         this.chance = chance;

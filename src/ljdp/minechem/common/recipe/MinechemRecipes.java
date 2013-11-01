@@ -26,6 +26,7 @@ import ljdp.minechem.common.recipe.handlers.MekanismOreDictionaryHandler;
 import ljdp.minechem.common.recipe.handlers.UndergroundBiomesOreDictionaryHandler;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.ForgeSubscribe;
@@ -1421,22 +1422,11 @@ public class MinechemRecipes {
    }
 
    private void registerPoisonRecipes(EnumMolecule molecule) {
-	  // TODO: add automatic item detection based on list of all items and food type detection -- asie
-      this.createPoisonedItemStack(Item.appleRed, 0, molecule);
-      this.createPoisonedItemStack(Item.porkCooked, 0, molecule);
-      this.createPoisonedItemStack(Item.beefCooked, 0, molecule);
-      this.createPoisonedItemStack(Item.carrot, 0, molecule);
-      this.createPoisonedItemStack(Item.poisonousPotato, 0, molecule);
-      this.createPoisonedItemStack(Item.bakedPotato, 0, molecule);
-      this.createPoisonedItemStack(Item.bread, 0, molecule);
-      this.createPoisonedItemStack(Item.potato, 0, molecule);
-      this.createPoisonedItemStack(Item.bucketMilk, 0, molecule);
-      this.createPoisonedItemStack(Item.fishCooked, 0, molecule);
-      this.createPoisonedItemStack(Item.cookie, 0, molecule);
-      this.createPoisonedItemStack(Item.pumpkinPie, 0, molecule);
-      this.createPoisonedItemStack(Item.fishRaw, 0, molecule);
-      this.createPoisonedItemStack(Item.appleGold, 0, molecule);
-      this.createPoisonedItemStack(MinechemItems.EmptyPillz, 0, molecule);
+	  for(Item i: Item.itemsList) {
+		  if(i != null && i instanceof ItemFood) {
+			  this.createPoisonedItemStack(i, 0, molecule);
+		  }
+	  }
    }
    
    /*
