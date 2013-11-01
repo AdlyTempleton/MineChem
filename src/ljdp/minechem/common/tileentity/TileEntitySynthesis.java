@@ -590,12 +590,12 @@ public class TileEntitySynthesis extends MinechemTileEntity implements ISidedInv
 
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int side) {
 		
-		if(var1==1){
+		if(side == 1){
 			return this.kStorage;
 		}
-		if(var1==0){
+		if(side == 0){
 			return this.kOutput;
 		}
 		return this.kBottles;

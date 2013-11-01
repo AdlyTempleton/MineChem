@@ -366,7 +366,7 @@ public class TileEntityBluePrintPrinter extends MinechemTileEntity implements IS
 
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int side) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -50,8 +50,8 @@ public abstract class MinechemTileEntity extends TileEntityUniversalElectrical i
 	abstract void sendUpdatePacket();
 	
 	@Override
-	public ItemStack getStackInSlot(int var1) {
-		return this.inventory[var1];
+	public ItemStack getStackInSlot(int slot) {
+		return this.inventory[slot];
 	}
 	public float getEnergyUsage(){
 		return this.lastEnergyUsed*20;

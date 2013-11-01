@@ -12,6 +12,11 @@ public class DecomposerRecipeChance extends DecomposerRecipe {
     static Random random = new Random();
     float chance;
 
+    public DecomposerRecipeChance(ItemStack input, float chance, boolean canSynth, Chemical... output) {
+        super(input, canSynth, output);
+        this.chance = chance;
+    }
+
     public DecomposerRecipeChance(ItemStack input, float chance, Chemical... output) {
         super(input, output);
         this.chance = chance;

@@ -166,9 +166,9 @@ public class TileEntityProxy extends TileEntity implements ISidedInventory {
 	}
 
 	@Override
-	public int[] getAccessibleSlotsFromSide(int var1) {
+	public int[] getAccessibleSlotsFromSide(int side) {
 		if(this.getManager()!=null&&this.getManager() instanceof ISidedInventory){
-			return ((ISidedInventory) this.getManager()).getAccessibleSlotsFromSide(var1);
+			return ((ISidedInventory) this.getManager()).getAccessibleSlotsFromSide(side);
 		}
 		return new int[0];
 	}

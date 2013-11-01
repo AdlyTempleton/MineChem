@@ -84,7 +84,7 @@ public class ModMinechem {
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = Logger.getLogger("minechem");
+        logger = Logger.getLogger("MineChem");
         logger.setParent(FMLLog.getLogger());
 
         System.out.println(TranslationHelper.loadLanguages(ConstantValue.LANG_DIR, LANGUAGES_SUPPORTED));
