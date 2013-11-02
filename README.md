@@ -11,4 +11,4 @@ Minechem can be found at: http://universalelectricity.com/minechem
 The details of the licence can be found at: http://creativecommons.org/licenses/by-sa/3.0/us/
 
 ## Contributors and permissions
-The list of contributors can be found here: http://pastebin.com/raw.php?i=LsumDirg
+The list of contributors can be found here: http://pastebin.com/raw.php?i=ND8c1WPK
