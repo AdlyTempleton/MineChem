@@ -88,7 +88,7 @@ public class BlockSynthesis extends BlockMinechemContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World var1) {
+    public TileEntity createNewTileEntity(World world) {
         return new TileEntitySynthesis();
     }
 

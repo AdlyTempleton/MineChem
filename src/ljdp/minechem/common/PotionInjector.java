@@ -30,7 +30,8 @@ public class PotionInjector {
 
 			field.set(null, effectAray);
 		} catch (Exception e) {
-			System.err.println("He's Dead Jim" + " " + e);
+	     System.err.println("[MineChem] Severe error, please report this to the github:");
+         System.err.println(e);
 		}
 		atropineHigh = new PotionProvider(potionTotal, true, 0x00FF6E).setPotionName("Delirium").setIconIndex(2, 1); // That icon is a refrence to alice in wonderland :P
 	}

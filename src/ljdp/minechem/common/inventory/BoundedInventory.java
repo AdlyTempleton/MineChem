@@ -9,8 +9,8 @@ import net.minecraft.item.ItemStack;
 
 public class BoundedInventory implements IInventory {
 
-    private final IInventory _inv;
-    private final int[] _slots;
+    private final IInventory inventory;
+    private final int[] slots;
 
     public BoundedInventory(IInventory inv, int[] slots) {
         if (inv == null)
@@ -22,8 +22,8 @@ public class BoundedInventory implements IInventory {
                 throw new IllegalArgumentException("slot: out of bounds");
         }
 
-        _inv = inv;
-        _slots = slots;
+        this.inventory = inv;
+        this.slots = slots;
     }
 
     public ItemStack[] copyInventoryToArray() {
@@ -54,67 +54,67 @@ public class BoundedInventory implements IInventory {
 
     @Override
     public int getSizeInventory() {
-        return _slots.length;
+        return slots.length;
     }
 
     @Override
     public ItemStack getStackInSlot(int slot) {
-        return _inv.getStackInSlot(_slots[slot]);
+        return inventory.getStackInSlot(slots[slot]);
     }
 
     @Override
     public ItemStack decrStackSize(int slot, int amount) {
-        return _inv.decrStackSize(_slots[slot], amount);
+        return inventory.decrStackSize(slots[slot], amount);
     }
 
     @Override
     public ItemStack getStackInSlotOnClosing(int slot) {
-        return _inv.getStackInSlotOnClosing(_slots[slot]);
+        return inventory.getStackInSlotOnClosing(slots[slot]);
     }
 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
-        _inv.setInventorySlotContents(_slots[slot], stack);
+        inventory.setInventorySlotContents(slots[slot], stack);
     }
 
     @Override
     public String getInvName() {
-        return _inv.getInvName();
+        return inventory.getInvName();
     }
 
     @Override
     public int getInventoryStackLimit() {
-        return _inv.getInventoryStackLimit();
+        return inventory.getInventoryStackLimit();
     }
 
     @Override
     public void onInventoryChanged() {
-        _inv.onInventoryChanged();
+        inventory.onInventoryChanged();
     }
 
     @Override
     public boolean isUseableByPlayer(EntityPlayer player) {
-        return _inv.isUseableByPlayer(player);
+        return inventory.isUseableByPlayer(player);
     }
 
     @Override
     public void openChest() {
-        _inv.openChest();
+        inventory.openChest();
     }
 
     @Override
     public void closeChest() {
-        _inv.closeChest();
+        inventory.closeChest();
     }
 
     @Override
     public boolean isInvNameLocalized() {
-        return _inv.isInvNameLocalized();
+        return inventory.isInvNameLocalized();
     }
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-        return _inv.isItemValidForSlot(_slots[i], itemstack);
+        return inventory.isItemValidForSlot(slots[i], itemstack);
     }
 
 }

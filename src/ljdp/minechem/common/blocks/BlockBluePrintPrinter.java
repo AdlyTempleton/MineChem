@@ -40,7 +40,7 @@ public class BlockBluePrintPrinter extends BlockMinechemContainer{
         return true;
     }
 	 @Override
-	    public TileEntity createNewTileEntity(World var1) {
+	    public TileEntity createNewTileEntity(World world) {
 	        return new TileEntityBluePrintPrinter();
 	    }
 	 @Override

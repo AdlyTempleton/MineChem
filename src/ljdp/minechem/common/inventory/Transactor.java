@@ -11,104 +11,104 @@ public class Transactor {
    int maxStackSize;
 
 
-   public Transactor(BoundedInventory var1) {
+   public Transactor(BoundedInventory inventory) {
       this.maxStackSize = 64;
-      this.inventory = var1;
+      this.inventory = inventory;
    }
 
-   public Transactor(BoundedInventory var1, int var2) {
-      this(var1);
-      this.maxStackSize = var2;
+   public Transactor(BoundedInventory inventory, int maxStackSize) {
+      this(inventory);
+      this.maxStackSize = maxStackSize;
    }
 
-   public int add(ItemStack var1, boolean var2) {
-      int var3 = 0;
-      int var4 = var1.stackSize;
+   public int add(ItemStack stack, boolean change) {
+      int itemsAdded = 0;
+      int itemsLeft = stack.stackSize;
 
-      for(int var5 = 0; var4 > 0 && var5 < this.inventory.getSizeInventory(); ++var5) {
-         int var6 = this.putStackInSlot(var1, var4, var5, var2);
-         var3 += var6;
-         var4 -= var6;
+      for(int slot = 0; itemsLeft > 0 && slot < this.inventory.getSizeInventory(); ++slot) {
+         int resultAdded = this.putStackInSlot(stack, itemsLeft, slot, change);
+         itemsAdded += resultAdded;
+         itemsLeft -= resultAdded;
       }
 
-      return var3;
+      return itemsAdded;
    }
 
-   public ItemStack[] remove(int var1, boolean var2) {
-      int var3 = var1;
-      ArrayList var4 = new ArrayList();
+   public ItemStack[] remove(int stackSize, boolean change) {
+      int amount = stackSize;
+      ArrayList stackList = new ArrayList();
 
-      for(int var5 = 0; var3 > 0 && var5 < this.inventory.getSizeInventory(); ++var5) {
-         ItemStack var6 = null;
-         if(var2) {
-            var6 = this.inventory.decrStackSize(var5, var3);
+      for(int slot = 0; amount > 0 && slot < this.inventory.getSizeInventory(); ++slot) {
+         ItemStack stack = null;
+         if(change) {
+            stack = this.inventory.decrStackSize(slot, amount);
          } else {
-        	if (this.inventory.getStackInSlot(var5) != null){
-        		var6 = this.inventory.getStackInSlot(var5).copy();
-        		var6.stackSize = Math.min(var1, var6.stackSize);
+        	if (this.inventory.getStackInSlot(slot) != null){
+        		stack = this.inventory.getStackInSlot(slot).copy();
+        		stack.stackSize = Math.min(stackSize, stack.stackSize);
         	}
          }
 
-         if(var6 != null) {
-            var3 -= var6.stackSize;
-            var4.add(var6);
+         if(stack != null) {
+            amount -= stack.stackSize;
+            stackList.add(stack);
          }
       }
 
-      return (ItemStack[])var4.toArray(new ItemStack[var4.size()]);
+      return (ItemStack[])stackList.toArray(new ItemStack[stackList.size()]);
    }
 
-   public ItemStack removeItem(boolean var1) {
-      for(int var2 = 0; var2 < this.inventory.getSizeInventory(); ++var2) {
-         ItemStack var3 = this.inventory.getStackInSlot(var2);
-         if(var3 != null) {
-            if(var1) {
-               return this.inventory.decrStackSize(var2, 1);
+   public ItemStack removeItem(boolean change) {
+      for(int slot = 0; slot < this.inventory.getSizeInventory(); slot++) {
+         ItemStack stack = this.inventory.getStackInSlot(slot);
+         if(stack != null) {
+            if(change) {
+               return this.inventory.decrStackSize(slot, 1);
             }
 
-            ItemStack var4 = var3.copy();
-            var4.stackSize = 1;
-            return var4;
+            ItemStack targetStack = stack.copy();
+            targetStack.stackSize = 1;
+            return targetStack;
          }
       }
 
       return null;
    }
 
-   public int putStackInSlot(ItemStack var1, int var2, int var3, boolean var4) {
-      ItemStack var5 = this.inventory.getStackInSlot(var3);
-      if(var5 == null) {
-         ItemStack var6 = var1.copy();
-         var6.stackSize = Math.min(var2, this.getMaxStackSize(var1));
-         if(var4) {
-            this.inventory.setInventorySlotContents(var3, var6);
+   public int putStackInSlot(ItemStack stack, int amount, int slot, boolean change) {
+      ItemStack stackInSlot = this.inventory.getStackInSlot(slot);
+      if(stackInSlot == null) {
+         ItemStack targetStack = stack.copy();
+         targetStack.stackSize = Math.min(amount, this.getMaxStackSize(stack));
+         if(change) {
+            this.inventory.setInventorySlotContents(slot, targetStack);
          }
 
-         return var6.stackSize;
+         return targetStack.stackSize;
       } else {
-         return Util.stacksAreSameKind(var1, var5)?this.appendStackToSlot(var1, var2, var3, var4):0;
+         return Util.stacksAreSameKind(stack, stackInSlot)?this.appendStackToSlot(amount, slot, change):0;
       }
    }
 
-   public int appendStackToSlot(ItemStack var1, int var2, int var3, boolean var4) {
-      ItemStack var5 = this.inventory.getStackInSlot(var3);
-      if(var5.stackSize + var2 > this.getMaxStackSize(var5)) {
-         int var6 = this.getMaxStackSize(var5) - var5.stackSize;
-         if(var4) {
-            var5.stackSize += var6;
+   public int appendStackToSlot(int amount, int slot, boolean changeStackSize) {
+      ItemStack stackInSlot = this.inventory.getStackInSlot(slot);
+      if(stackInSlot.stackSize + amount > this.getMaxStackSize(stackInSlot)) {
+         int amountToFill = this.getMaxStackSize(stackInSlot) - stackInSlot.stackSize;
+         if(changeStackSize) {
+            stackInSlot.stackSize += amountToFill;
          }
 
-         return var6;
+         return amountToFill;
       } else {
-         if(var4) {
-            var5.stackSize += var2;
+         if(changeStackSize) {
+            stackInSlot.stackSize += amount;
          }
 
-         return var2;
+         return amount;
       }
    }
 
-   public int getMaxStackSize(ItemStack var1) {
-      return Math.min(var1.getMaxStackSize(), this.maxStackSize);
+   public int getMaxStackSize(ItemStack stack) {
+      return Math.min(stack.getMaxStackSize(), this.maxStackSize);
    }
 }

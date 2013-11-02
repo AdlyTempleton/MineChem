@@ -10,6 +10,13 @@ public class DecomposerRecipeSelect extends DecomposerRecipeChance {
 
     ArrayList<DecomposerRecipe> possibleRecipes = new ArrayList<DecomposerRecipe>();
 
+    public DecomposerRecipeSelect(ItemStack input, float chance, boolean canSynth, DecomposerRecipe... possibleRecipes) {
+        super(input, chance);
+        for (DecomposerRecipe recipe : possibleRecipes)
+            this.possibleRecipes.add(recipe);
+    }
+
+    @Deprecated
     public DecomposerRecipeSelect(ItemStack input, float chance, DecomposerRecipe... possibleRecipes) {
         super(input, chance);
         for (DecomposerRecipe recipe : possibleRecipes)

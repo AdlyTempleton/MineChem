@@ -1,0 +1,34 @@
+{
+"Block.stone": {
+	"recipeDecompose": {
+		"chance": 0.2,
+		"output": [
+			"SiO", "FeO", "MgO",
+			"TiO", "PbO", "ZnO"
+		]
+	],
+	"recipeSynthesis": [
+		"output": [ "Block.stone", 7 ],
+		"shaped": true,
+		"energyCost": 50
+		"elements": ["Si", 0, 0, "O2", 0, 0]
+	]
+},
+"Block.grass": {
+	"recipeDecompose": {
+		"chance": 0.07,
+		"output": [
+			"SiO", "FeO", "MgO",
+			"TiO", "PbO", "ZnO", "GaAs",
+			"#m_cellulose"
+		]
+	],
+	"recipeSynthesis": [
+		"output": [ "Block.grass", 16 ]
+		"shaped": true,
+		"energyCost": 50
+		"elements": [0, "#m_cellulose", 0, 0, "O2", "Si"]
+	]
+}
+}
+

@@ -15,9 +15,9 @@ public class SynthesisRecipe {
    private boolean isShaped;
 
 
-   public static SynthesisRecipe add(SynthesisRecipe var0) {
-      recipes.add(var0);
-      return var0;
+   public static SynthesisRecipe add(SynthesisRecipe recipe) {
+      recipes.add(recipe);
+      return recipe;
    }
 
    public static void remove(ItemStack itemStack){
@@ -41,30 +41,29 @@ public class SynthesisRecipe {
 	   
    }   
    
-   public SynthesisRecipe(ItemStack var1, boolean var2, int var3, Chemical ... var4) {
-      this.output = var1;
-      this.isShaped = var2;
-      this.energyCost = var3;
-      this.shapedRecipe = var4;
+   public SynthesisRecipe(ItemStack output, boolean isShaped, int energyCost, Chemical ... shapedRecipe) {
+      this.output = output;
+      this.isShaped = isShaped;
+      this.energyCost = energyCost;
+      this.shapedRecipe = shapedRecipe;
       this.unshapedRecipe = new ArrayList();
-      Chemical[] var5 = var4;
-      int var6 = var4.length;
+      Chemical[] chemicalArray = shapedRecipe;
 
-      for(int var7 = 0; var7 < var6; ++var7) {
-         Chemical var8 = var5[var7];
-         if(var8 != null) {
-            this.unshapedRecipe.add(var8);
+      for(int i = 0; i < shapedRecipe.length; i++) {
+         Chemical chemical = chemicalArray[i];
+         if(chemical != null) {
+            this.unshapedRecipe.add(chemical);
          }
       }
 
    }
 
-   public SynthesisRecipe(ItemStack var1, boolean var2, int var3, ArrayList var4) {
-      this.output = var1;
-      this.isShaped = var2;
-      this.energyCost = var3;
-      this.shapedRecipe = (Chemical[])var4.toArray(new Chemical[var4.size()]);
-      this.unshapedRecipe = var4;
+   public SynthesisRecipe(ItemStack output, boolean isShaped, int energyCost, ArrayList unshapedRecipe) {
+      this.output = output;
+      this.isShaped = isShaped;
+      this.energyCost = energyCost;
+      this.shapedRecipe = (Chemical[])unshapedRecipe.toArray(new Chemical[unshapedRecipe.size()]);
+      this.unshapedRecipe = unshapedRecipe;
    }
 
    public ItemStack getOutput() {
@@ -88,14 +87,14 @@ public class SynthesisRecipe {
    }
 
    public int getIngredientCount() {
-      int var1 = 0;
+      int count = 0;
 
-      Chemical var3;
-      for(Iterator var2 = this.unshapedRecipe.iterator(); var2.hasNext(); var1 += var3.amount) {
-         var3 = (Chemical)var2.next();
+      Chemical chemical;
+      for(Iterator i = this.unshapedRecipe.iterator(); i.hasNext(); count += chemical.amount) {
+         chemical = (Chemical)i.next();
       }
 
-      return var1;
+      return count;
    }
 
 }

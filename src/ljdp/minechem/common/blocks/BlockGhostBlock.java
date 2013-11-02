@@ -126,7 +126,7 @@ public class BlockGhostBlock extends BlockContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World var1) {
+    public TileEntity createNewTileEntity(World world) {
         return new TileEntityGhostBlock();
     }
 }

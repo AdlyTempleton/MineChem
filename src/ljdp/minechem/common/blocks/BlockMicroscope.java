@@ -45,7 +45,7 @@ public class BlockMicroscope extends BlockMinechemContainer {
     }
 
     @Override
-    public TileEntity createNewTileEntity(World var1) {
+    public TileEntity createNewTileEntity(World world) {
         return new TileEntityMicroscope();
     }
 
