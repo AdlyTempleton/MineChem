@@ -32,6 +32,7 @@ import net.minecraftforge.event.ForgeSubscribe;
 import net.minecraftforge.oredict.OreDictionary;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.item.ItemFood;
 
 public class MinechemRecipes {
 
@@ -1424,23 +1425,17 @@ public class MinechemRecipes {
       return var6;
    }
 
-   private void registerPoisonRecipes(EnumMolecule var1) {
-      this.createPoisonedItemStack(Item.appleRed, 0, var1);
-      this.createPoisonedItemStack(Item.porkCooked, 0, var1);
-      this.createPoisonedItemStack(Item.beefCooked, 0, var1);
-      this.createPoisonedItemStack(Item.carrot, 0, var1);
-      this.createPoisonedItemStack(Item.poisonousPotato, 0, var1);
-      this.createPoisonedItemStack(Item.bakedPotato, 0, var1);
-      this.createPoisonedItemStack(Item.bread, 0, var1);
-      this.createPoisonedItemStack(Item.potato, 0, var1);
-      this.createPoisonedItemStack(Item.bucketMilk, 0, var1);
-      this.createPoisonedItemStack(Item.fishCooked, 0, var1);
-      this.createPoisonedItemStack(Item.cookie, 0, var1);
-      this.createPoisonedItemStack(Item.pumpkinPie, 0, var1);
-      this.createPoisonedItemStack(Item.fishRaw, 0, var1);
-      this.createPoisonedItemStack(Item.appleGold, 0, var1);
-      this.createPoisonedItemStack(MinechemItems.EmptyPillz, 0, var1);
+ private void registerPoisonRecipes(EnumMolecule molecule) {
+	  for(Item i: Item.itemsList) {
+		  if(i != null && i instanceof ItemFood) {
+			  this.createPoisonedItemStack(i, 0, molecule);
+		  }
+	  }
    }
+
+   
+   /* 
+   // Old ore dictonary code that needs to be made into a handler 
    String[] compounds = {"Aluminium","Titanium","Chrome",   
 	           "Tungsten", "Lead",    "Zinc",
 	           "Platinum", "Nickel",  "Osmium",
@@ -1478,6 +1473,8 @@ public class MinechemRecipes {
 	boolean[] craftable = {true, true, false, false, false, false, false};
 	int[] 	 sizeCoeff = {1, 4, 8, 4, 36, 16, 4};
 	private ArrayList<OreDictionaryHandler> oreDictionaryHandlers;
+
+	*/
 	
 	@ForgeSubscribe
 	public void oreEvent(OreDictionary.OreRegisterEvent var1) {
@@ -1708,3 +1705,4 @@ public class MinechemRecipes {
 		this.oreDictionaryHandlers.add(new DefaultOreDictionaryHandler());
 	}
 } // EOF
+
