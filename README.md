@@ -1,9 +1,6 @@
-Minechem is now maintained by jakimfett, and this fork is outdated. Please get the updated source from (jakimfett's repository](https://github.com/jakimfett/MineChem).
+Minechem 5 is a mod about chemistry and chemical industry, and is now maintained by jakimfett.
 
-Minechem
-=========
-
-Minechem 5 is a mod about chemistry and chemical industry. 
+This fork is outdated. Please get the updated source from [jakimfett's repository](https://github.com/jakimfett/MineChem).
 
 ## License:
 
